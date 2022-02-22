@@ -33,7 +33,7 @@ fi
 touch /etc/squid/allowed_domains.txt
 
 if [ ! -z "${ALLOWED_DOMAINS}" ]; then
-    echo $ALLOWED_DOMAINS > /etc/squid/allowed_domains.txt
+    echo $ALLOWED_DOMAINS | tr " " "\n" > /etc/squid/allowed_domains.txt
 fi
 
 echo "acl all src all" >> /etc/squid/squid.conf
