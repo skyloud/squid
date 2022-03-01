@@ -49,11 +49,27 @@ docker run \
   skyloud/squid:5.4.1
 ```
 
+## How to customize allowed ports
+
+```bash
+# How to allow trafic to proxy ftp
+docker run \
+  -it \
+  -e AUTH_USERNAME="my-user" \
+  -e AUTH_PASSWORD="aVeryStrongPassword" \
+  -e ALLOWED_DOMAINS="myftpserver.cloud" \
+  -e ALLOWED_PORTS="443 21" \
+  -p 3128:3128 \
+  skyloud/squid:5.4.1
+```
+
+
 ## List of environment variables
 
 | Name               | Default                     | Description                                                       |
 | ------------------ | --------------------------- | ----------------------------------------------------------------- |
 | `ALLOWED_DOMAINS`  | `".skyloud.app"`            | White-spaced list of domains allowed to be fetched through proxy. |
+| `ALLOWED_PORTS`    | `"443"`                     | White-spaced list of ports allowed to pass through proxy.   |
 | `AUTH_USERNAME`    | `""`                        | Username for authentication. Leave blank to disable feature.      |
 | `AUTH_PASSWORD`    | `""`                        | Password for authentication.                                      |
 | `AUTH_REALM`       | `"Authentication required"` | Message from proxy when auth is required                          |

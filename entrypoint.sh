@@ -37,7 +37,11 @@ if [ ! -z "${ALLOWED_DOMAINS}" ]; then
 fi
 
 echo "acl all src all" >> /etc/squid/squid.conf
-echo "acl safe_ports port 443" >> /etc/squid/squid.conf
+
+for port in `echo ${ALLOWED_PORTS} | tr " " "\n"`; do 
+    echo "acl safe_ports port ${port}" >> /etc/squid/squid.conf
+done
+
 echo "acl allow_domains url_regex -i \"/etc/squid/allowed_domains.txt\"" >> /etc/squid/squid.conf
 
 printf "http_access allow" >> /etc/squid/squid.conf
