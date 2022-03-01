@@ -56,6 +56,7 @@ COPY entrypoint.sh /entrypoint.sh
 EXPOSE 3128
 
 ENV ALLOWED_DOMAINS ".skyloud.app"
+ENV ALLOWED_PORTS "443"
 ENV AUTH_USERNAME ""
 ENV AUTH_PASSWORD ""
 
